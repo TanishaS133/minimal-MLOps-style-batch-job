@@ -43,6 +43,8 @@ def main():
 
         with open(args.config, "r") as file:
             config = yaml.safe_load(file)
+        if not isinstance(config, dict):
+            raise ValueError("Invalid config structure")
 
         # Validate required keys
         required_keys = ["seed", "window", "version"]
